@@ -1,0 +1,62 @@
+/* --- NAVBAR & HEADER STYLES --- */
+.navbar-brand {
+    margin-left: 0%;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+.navbar-warna {
+    background-color: #F7F7F7;
+}
+
+.nav-link {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #000 !important;
+}
+
+/* --- ANIMASI SEARCH INPUT --- */
+.search-input {
+    width: 0;
+    opacity: 0;
+    padding: 0;
+    border: none;
+    visibility: hidden;
+    transition: all 0.3s ease-out;
+}
+
+.search-input.show {
+    width: 200px;
+    opacity: 1;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid #ced4da;
+    margin-right: 5px;
+    visibility: visible;
+}
+
+/* --- ULTIMATE FIX ANIMASI DROPDOWN --- */
+.dropdown .dropdown-menu {
+    display: block !important;
+    visibility: hidden;
+    opacity: 0;
+    
+    /* 1. KUNCI POSISI SECARA MUTLAK */
+    top: 100% !important;      /* Pastikan selalu di bawah tombol */
+    right: 0 !important;       /* Kunci rata kanan */
+    left: auto !important;     /* Cegah sistem menariknya ke kiri */
+    margin-top: 8px !important;/* Jarak dari tombol */
+    
+    /* 2. KEMBALIKAN ANIMASI TRANSFORM SECARA AMAN */
+    transform: translateY(-15px) !important; 
+    transition: all 0.3s ease-out !important;
+    pointer-events: none;
+}
+
+/* Saat menu dibuka */
+.dropdown .dropdown-menu.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0) !important;
+    pointer-events: auto;
+}

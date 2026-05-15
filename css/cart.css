@@ -1,0 +1,111 @@
+@import url('/asset/font/font.css');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    padding-top: 70px;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+.cart-section {
+    min-height: calc(100vh - 70px);
+}
+
+.cart-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.cart-card {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.cart-item {
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.cart-item:hover {
+    background-color: #f8f9fa;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.cart-item-img {
+    object-fit: cover;
+    height: 100px;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+.quantity-input {
+    max-width: 60px;
+    border-color: #ced4da;
+    border-radius: 5px;
+}
+
+.quantity-input:focus {
+    border-color: #1a1a1a;
+    box-shadow: none;
+}
+
+.promo-input {
+    border-radius: 8px 0 0 8px;
+}
+
+.promo-input:focus {
+    border-color: #1a1a1a;
+    box-shadow: none;
+}
+
+.input-group > .btn-dark {
+    border-radius: 0 8px 8px 0;
+}
+
+.btn-checkout {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-checkout:hover {
+    background-color: #333333;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn-checkout.disabled {
+    background-color: #6c757d !important;
+    color: #ffffff !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    box-shadow: none !important;
+    pointer-events: auto !important;
+    border-color: #6c757d !important;
+}
+
+.payment-methods i {
+    color: #6c757d;
+}
+
+.img-grey {
+     filter: grayscale(100%);
+     -webkit-filter: grayscale(100%);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Untuk Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

@@ -1,0 +1,104 @@
+/* Styling Detail Produk */
+@import url('/asset/font/font.css');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    padding-top: 70px;
+}
+.product-detail {
+    background-color: #ffffff;
+}
+
+/* Label angka di bawah gambar galeri */
+.img-label {
+    display: block;
+    margin-top: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    color: #333;
+}
+/* Pastikan modal-body tidak memiliki padding yang menghalangi klik luar */
+.modal-body {
+    padding: 0 !important;
+}
+
+/* Mengatur ukuran gambar di overlay agar tetap proporsional dan tidak pecah */
+.carousel-item img {
+    max-height: 85vh; /* Menggunakan 85% tinggi layar */
+    width: auto;
+    margin: auto;
+    object-fit: contain;
+}
+
+/* Indikasi gambar galeri bisa diklik */
+.img-thumbnail-link {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+}
+
+.img-thumbnail-link:hover {
+    opacity: 0.7;
+}
+/* Kotak Informasi Produk */
+.product-info-box {
+    background-color: #fcfcfc;
+    border-radius: 4px;
+}
+
+.product-info-box h2 {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 10px;
+}
+
+.product-info-box p {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Pilihan Ukuran */
+.size-btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0; /* Bentuk kotak sesuai referensi */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.size-btn:hover, .size-btn:focus {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Tombol Checkout */
+.checkout-btn {
+    border-radius: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Breadcrumb styling */
+.breadcrumb-item a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: none;
+}
+
+/* Force cursor not-allowed on disabled add to cart button */
+#add-to-cart-btn:disabled {
+    pointer-events: auto !important;
+    cursor: not-allowed !important;
+}

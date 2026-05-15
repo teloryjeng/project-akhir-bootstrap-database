@@ -1,0 +1,200 @@
+@import url('/asset/font/font.css');
+
+/* General Styles */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    padding-top: 70px;
+    color: #333;
+}
+
+
+/* Hero Section */
+.hero-img-container {
+    position: relative;
+}
+
+.hero-text {
+    position: absolute;
+    bottom: 20px; /* Jarak dari bawah gambar */
+    left: 20px;   /* Jarak dari kiri gambar */
+    width: 400px;
+    height: 150px;
+    
+
+    background-color: rgba(255, 255, 255, 0.15); /* Warna putih sangat transparan */
+    backdrop-filter: blur(12px);                /* Efek buram di belakang kaca */
+    -webkit-backdrop-filter: blur(12px);         /* Dukungan untuk browser Safari */
+    
+    /* 2. BORDER TIPIS (Memberi kesan pinggiran kaca) */
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    border-radius: 20px;
+    /* 3. DROP SHADOW (Efek bayangan agar kotak timbul) */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    /* MODIFIKASI UNTUK PERATAAN TENGAH */
+    display: flex;                /* Mengaktifkan mode flex */
+    flex-direction: column;       /* Menyusun h1 dan p secara vertikal */
+    justify-content: center;      /* Memposisikan teks di tengah secara vertikal */
+    align-items: flex-start;      /* Memposisikan teks di kiri secara horizontal (sesuai gambar) */
+    padding: 30px;
+}
+
+.hero-text h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem; /* Ukuran disesuaikan agar pas di dalam kotak */
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.hero-text p {
+    font-family: 'Poppins', sans-serif;
+    font-size: .9rem;
+    margin-bottom: 0;
+    color: #f8f9fa;
+}
+
+/* Quote Section */
+.quote-section h2 {
+    font-family: 'Poppins', sans-serif; /* Menggunakan font yang sudah didefinisikan */
+    font-size: 1.5rem;
+    font-weight: 200; /* Menggunakan varian ExtraLight */
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.quote-section p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700; /* Memberikan kesan tegas pada nama tokoh */
+}
+
+/* Category Cards */
+.category-card {
+    position: relative;
+    overflow: hidden;
+
+}
+
+.category-card img {
+    width: 100%;
+    height: 450px;       /* Tentukan tinggi tetap (misal 450px) agar rapi sejajar */
+    object-fit: cover;   /* Memastikan gambar memenuhi kotak tanpa gepeng */
+    transition: transform 0.3s ease;
+    border-radius: 8px;  /* Opsional: memberi sedikit lengkungan di sudut */
+}
+
+.category-card:hover img {
+    transform: scale(1.02);
+}
+
+.category-label {
+    position: absolute;
+    color:#ffffff;
+    bottom: 15px;
+    left: 15px;
+    padding: 8px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.15); /* Warna putih sangat transparan */
+    backdrop-filter: blur(12px);                /* Efek buram di belakang kaca */
+    -webkit-backdrop-filter: blur(12px);         /* Dukungan untuk browser Safari */
+    
+    /* 2. BORDER TIPIS (Memberi kesan pinggiran kaca) */
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    border-radius: 20px;
+    /* 3. DROP SHADOW (Efek bayangan agar kotak timbul) */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* --- PRODUCT CARDS --- */
+
+/* 1. Menyeragamkan ukuran gambar produk */
+.product-card img, 
+.product-card-interactive img {
+    width: 100%;
+    height: 350px;           
+    object-fit: cover;       
+    object-position: center;
+    transition: transform 0.4s ease; 
+    background-color: #ebebeb;
+}
+
+/* 2. Container kartu produk agar animasi tidak luber */
+.product-card, 
+.product-card-interactive {
+    overflow: hidden;        
+    border-radius: 8px;
+    display: block;          
+}
+
+/* 3. Efek Zoom saat Hover */
+.product-card:hover img, 
+.product-card-interactive:hover img {
+    transform: scale(1.05);  
+}
+
+/* 4. MENGHILANGKAN GARIS BIRU (PENTING) */
+/* Gunakan selektor yang lebih spesifik untuk memaksa browser membuang gaya default */
+a.product-link, 
+a.product-link:hover, 
+a.product-link:visited, 
+a.product-link:active {
+    text-decoration: none !important; /* Menghapus garis bawah */
+    color: inherit !important;        /* Mengikuti warna teks h6/p (hitam) */
+    outline: none !important;         /* Menghapus garis fokus saat diklik */
+    box-shadow: none !important;      /* Menghapus bayangan tautan */
+}
+
+.product-card h6 {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #333; /* Memastikan warna teks judul kemeja tetap hitam */
+}
+
+.product-card p {
+    font-family: 'Poppins', sans-serif;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+
+.hero-img-container img, 
+.col-md-6 img {
+    max-height: 600px; /* Atur angka ini sesuai keinginan */
+    object-fit: cover; /* Agar gambar tidak gepeng saat dikecilkan */
+}
+.hero-pertama {/* Agar gambar tidak gepeng saat dikecilkan */
+    object-position: center 77%;
+}
+.hero-kedua {/* Agar gambar tidak gepeng saat dikecilkan */
+    object-position: top center;
+}
+
+/* Mengatur margin atas dan bawah pada section */
+.hero-section {
+    margin-left:0%;
+    margin-top: 1%;    /* Jarak dengan navbar */
+    margin-bottom: 1%; /* Jarak dengan section di bawahnya */
+}
+
+.category-accessories{
+    object-position: center top;
+}
+
+.arrival{
+    font-family:'Poppins', sans-serif;
+    font-weight: normal;
+}
+
+/* Menghilangkan scrollbar pada slider */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

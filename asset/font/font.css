@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('/asset/font/Poppins-Regular.ttf'); /* Pastikan path folder benar */
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/asset/font/Poppins-ExtraLight.ttf');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/asset/font/Poppins-Bold.ttf');
+    font-weight: 700;
+}

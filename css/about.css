@@ -1,0 +1,108 @@
+/* Styling Khusus Halaman About Us */
+@import url('/asset/font/font.css');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    padding-top: 70px;
+}
+/* Container Hero */
+.about-hero-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end; /* Memaksa gambar benar-benar merapat ke ujung kanan */
+}
+
+/* Gambar Hero About */
+.about-hero-img {
+    width: 90%; /* Mengambil 90% ruang, menyisakan 10% di kiri untuk teks vertikal */
+    height: 550px; 
+    
+    object-fit: cover; 
+    object-position: center 12%; 
+    
+    /* Mengubah sudut lengkung: hanya kiri yang melengkung, kanan lancip rata dengan layar */
+    border-radius: 8px 0 0 8px; 
+}
+
+/* Teks Vertikal HAHAHIHI kidswear */
+.vertical-brand {
+    position: absolute;
+    left: 5%; /* Memberikan jarak dari ujung kiri layar agar tidak terlalu mepet */
+    top: 50%;
+    
+    transform: translateY(-50%) rotate(180deg);
+    writing-mode: vertical-rl; 
+    
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 3px;
+    color: #000;
+}
+
+.vertical-brand strong {
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+.vertical-brand span {
+    font-weight: 300;
+    font-size: 0.9rem;
+    margin-bottom: 5px; /* Jarak antara HahaHihi dan Kidswear */
+}
+
+/* Judul Artikel */
+.article-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: medium;
+    font-size: 2.2rem;
+    margin-left: 15%;
+    color: #111;
+}
+
+/* Garis dan Metadata Penulis */
+.article-meta {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+    margin: 25px 0 40px 15%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+}
+
+/* Paragraf Artikel */
+.article-content p {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.8;
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 25px;
+    margin-left: 15%;
+    text-align: justify;
+}
+
+/* Efek Huruf Awal Besar (Drop Cap) */
+.drop-cap::first-letter {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    float: left;
+    line-height: 0.8;
+    padding-right: 12px;
+    padding-top: 8px;
+    color: #000;
+}
+
+/* Teks Kecil di Samping Gambar Kedua */
+.side-text h6 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    color: #111;
+}
+
+.side-text p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 350;
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0;
+}

@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-warna fixed-top py-2">
+    <div class="container-fluid px-5">
+
+        <div class="d-flex align-items-center">
+            <a href="/index.html" class="navbar-brand me-3">
+                <img src="/asset/img/logo.png" alt="HahaHihi" width="50">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse justify-content px-5" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link mx-3" href="/new.html">New</a></li>
+                <li class="nav-item"><a class="nav-link mx-3" href="/category/boy.html">Boy</a></li>
+                <li class="nav-item"><a class="nav-link mx-3" href="/category/girl.html">Girl</a></li>
+            </ul>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+            <input type="text" id="searchInput" class="form-control search-input" placeholder="Search...">
+
+            <button class="btn" type="button" id="searchToggleBtn">
+                <i class="bi bi-search text-dark fs-5"></i>
+            </button>
+            <a href="/cart.html" class="btn">
+                <i class="bi bi-cart text-dark fs-5"></i>
+            </a>
+            <div class="dropdown">
+                <button class="btn" type="button" data-bs-toggle="dropdown" data-bs-display="static"
+                    aria-expanded="false">
+                    <i class="bi bi-person-circle text-dark fs-5"></i>
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-2">
+                    <li><a class="dropdown-item" href="/signin.html">Sign In</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="/signup.html">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

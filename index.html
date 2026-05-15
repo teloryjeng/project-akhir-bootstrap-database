@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haha Hihi - Kidswear</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/wafloat.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="./script/loadpart.js"></script>
+    <script src="./script/loadnewarrivals.js"></script>
+    <link rel="icon" type="image/png" href="/asset/img/favico.png">
+    
+    <link rel="apple-touch-icon" href="/asset/img/favico.png">
+</head>
+
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section m">
+        <div class="container-fluid px-5 p-2">
+            <div class="row g-0">
+                <div class="col-md-6">
+                    <div class="hero-img-container">
+                        <img src="./asset/img/home/hero1.jpg" alt="Kids 1" class="img-fluid w-100 hero-pertama">
+                        <div class="hero-text text-white p-5">
+                            <h1>Introducing</h1>
+                            <p>The first kidswear that very impossible to get in the world of funny moment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="./asset/img/home/hero2.jpg" alt="Kids 2"
+                        class="img-fluid w-100 h-100 object-fit-cover hero-kedua">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section text-center py-5 my-1">
+        <div class="container">
+            <h2 class="fst-italic">"Shoes transform your body language and attitude. They lift you physically and
+                emotionally."</h2>
+            <p class="fw-bold mt-3">— Christian Louboutin</p>
+        </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section class="categories py-5">
+        <div class="container">
+            <!-- BARIS PERTAMA -->
+            <div class="row g-3 mb-3">
+                <!-- Tops dan Bottoms berukuran kecil (misal: col-md-3) -->
+                <div class="col-md-3">
+                    <a href="./category/tops.html">
+                        <div class="category-card">
+                            <img src="./asset/img/category/tops.jpg" alt="Tops">
+                            <span class="category-label">Tops</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <a href="./category/bottoms.html">
+                        <div class="category-card">
+                            <img src="./asset/img/category/bottom.jpg" alt="Bottoms">
+                            <span class="category-label">Bottoms</span>
+                        </div>
+                    </a>
+                </div>
+                <!-- Accessories berukuran lebih panjang (misal: col-md-6) -->
+                <div class="col-md-6">
+                    <a href="./category/accessories.html">
+                        <div class="category-card">
+                            <img src="./asset/img/category/accessories.jpg" alt="Accessories"
+                                class="category-accessories">
+                            <span class="category-label">Accessories</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- BARIS KEDUA -->
+            <div class="row g-3">
+                <!-- Shoes berukuran normal -->
+                <div class="col-md-5">
+                    <a href="./category/shoes.html">
+                        <div class="category-card">
+                            <img src="./asset/img/category/shoes.jpg" alt="Shoes">
+                            <span class="category-label">Shoes</span>
+                        </div>
+                    </a>
+                </div>
+                <!-- About Us berukuran lebih panjang (misal: col-md-7) -->
+                <div class="col-md-7">
+                    <a href="./about.html">
+                        <div class="category-card">
+                            <img src="./asset/img/category/aboutus.jpg" alt="About Us">
+                            <span class="category-label">About Us</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="new-arrivals py-5 bg-light">
+        <div class="container">
+            <h4 class="mb-4 arrival">New Arrivals</h4>
+            
+            <div class="position-relative d-flex align-items-center">
+                <!-- Tombol Kiri -->
+                <button class="btn btn-dark rounded-circle position-absolute start-0 z-1 shadow-sm d-flex justify-content-center align-items-center" id="scrollLeftBtn" 
+                    style="transform: translateY(-50%); top: 40%; width: 45px; height: 45px; margin-left: -25px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+
+                <!-- Slider Container -->
+                <div class="d-flex overflow-x-auto gap-4 py-2 px-2 w-100 hide-scrollbar" id="new-arrivals-container">
+                    <!-- Data produk akan dimuat oleh loadnewarrivals.js dari database -->
+                </div>
+
+                <!-- Tombol Kanan -->
+                <button class="btn btn-dark rounded-circle position-absolute end-0 z-1 shadow-sm d-flex justify-content-center align-items-center" id="scrollRightBtn" 
+                    style="transform: translateY(-50%); top: 40%; width: 45px; height: 45px; margin-right: -25px; transition: opacity 0.3s ease;">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+</body>
+
+</html>

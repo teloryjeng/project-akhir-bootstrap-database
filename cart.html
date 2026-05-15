@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Haha Hihi Kidswear</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/cart.css">
+    <link rel="stylesheet" href="./css/wafloat.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="./script/loadpart.js"></script>
+    <script src="./script/cart.js"></script>
+    <link rel="icon" type="image/png" href="/asset/img/favico.png">
+    <link rel="apple-touch-icon" href="/asset/img/favico.png">
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="cart-section py-5">
+        <div class="container">
+            <h2 class="cart-title mb-5">Shopping Cart</h2>
+            
+            <div class="row g-4">
+                <!-- Cart Items List -->
+                <div class="col-lg-8">
+                    <div class="cart-card p-4 mb-4">
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+                            <h5 class="mb-0 fw-bold" id="cart-items-count">Items (0)</h5>
+                            <button id="removeAllBtn" class="btn btn-link text-danger text-decoration-none p-0 small fw-bold" style="display: none;">
+                                <i class="bi bi-trash3 me-1"></i> Remove All
+                            </button>
+                        </div>
+                        
+                        <div id="cart-items-container">
+                            <p class="text-center text-muted py-4">Memuat keranjang...</p>
+                        </div>
+                    </div>
+                    
+                    <a href="index.html" class="text-dark text-decoration-none fw-medium"><i class="bi bi-arrow-left me-2"></i> Continue Shopping</a>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="col-lg-4">
+                    <div class="cart-card p-4">
+                        <h5 class="fw-bold mb-4 border-bottom pb-3">Order Summary</h5>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span class="text-muted">Subtotal</span>
+                            <span class="fw-bold fs-5" id="total-price">Rp0</span>
+                        </div>
+                        
+                        <a href="checkout.html" id="checkoutBtn" class="btn btn-checkout w-100 py-3 text-uppercase fw-bold text-decoration-none d-block text-center">Proceed to Checkout</a>
+                        
+                        <div class="text-center mt-4 payment-methods">
+                            <p class="text-muted small mb-2">We accept</p>
+                            <img src="/asset/img/payment/qris.png" class="img-fluid img-grey" width="80px" alt="QRIS"></img>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+</body>
+
+</html>
