@@ -101,31 +101,79 @@ function loadProductDetail() {
 
             // Ubah Ukuran dari product_sizes
             const sizesContainer = document.getElementById('product-sizes-container');
+            const sizeSelectionArea = document.querySelector('.size-selection');
+            const sizeHeading = sizeSelectionArea ? sizeSelectionArea.querySelector('h6') : null;
+
             if (sizesContainer && product.sizes && product.sizes.length > 0) {
                 let sizesHTML = '';
+                const isAccessory = product.category === 'Accessories';
+                const isFruitCharms = product.name.toLowerCase().includes('fruit charms');
+
+                if (sizeSelectionArea) sizeSelectionArea.style.display = 'block';
+
+                if (isFruitCharms && sizeHeading) {
+                    sizeHeading.textContent = 'Select Amount';
+                } else if (isAccessory && sizeHeading) {
+                    sizeHeading.textContent = 'Select Color';
+                }
+
                 product.sizes.forEach(size => {
                     const disabledStr = size.stock <= 0 ? 'disabled' : '';
-                    const btnClass = size.stock <= 0 ? 'btn-outline-secondary' : 'btn-outline-dark';
-                    sizesHTML += `<button class="btn ${btnClass} size-btn" data-size="${size.size_name}" ${disabledStr}>${size.size_name}</button>`;
+                    if (isAccessory && !isFruitCharms) {
+                        // Render as color swatch
+                        const isLight = ['#FFFFFF', '#ffffff', 'white', '#FFF', '#fff'].includes(size.size_name);
+                        const borderStyle = isLight ? 'border: 1px solid #ddd;' : '';
+                        sizesHTML += `
+                            <button class="btn color-swatch size-btn" 
+                                    data-size="${size.size_name}" 
+                                    style="background-color: ${size.size_name}; width: 35px; height: 35px; border-radius: 50%; ${borderStyle} padding: 0;" 
+                                    ${disabledStr}>
+                            </button>`;
+                    } else {
+                        // Render as text button (Original)
+                        const btnClass = size.stock <= 0 ? 'btn-outline-secondary' : 'btn-outline-dark';
+                        sizesHTML += `<button class="btn ${btnClass} size-btn" data-size="${size.size_name}" ${disabledStr} style="padding: 0px 25px;">${size.size_name}</button>`;
+                    }
                 });
                 sizesContainer.innerHTML = sizesHTML;
 
-                // Handle size selection
+                // Handle size/color selection
                 let selectedSize = null;
                 const sizeBtns = sizesContainer.querySelectorAll('.size-btn');
+
+                // Auto-select if only one option exists
+                if (sizeBtns.length === 1) {
+                    const onlyBtn = sizeBtns[0];
+                    if (!onlyBtn.hasAttribute('disabled')) {
+                        setTimeout(() => onlyBtn.click(), 100); // Small delay to ensure listeners are ready
+                    }
+                }
+
                 sizeBtns.forEach(btn => {
                     btn.addEventListener('click', (e) => {
-                        // Reset all to outline
-                        sizeBtns.forEach(b => {
-                            if (!b.hasAttribute('disabled')) {
-                                b.classList.remove('btn-dark');
-                                b.classList.add('btn-outline-dark');
-                            }
-                        });
-                        // Set clicked to solid
-                        e.target.classList.remove('btn-outline-dark');
-                        e.target.classList.add('btn-dark');
-                        selectedSize = e.target.getAttribute('data-size');
+                        const target = e.currentTarget;
+                        if (isAccessory && !isFruitCharms) {
+                            // Color swatch selection style
+                            sizeBtns.forEach(b => {
+                                b.style.outline = 'none';
+                                b.style.boxShadow = 'none';
+                                b.style.transform = 'scale(1)';
+                            });
+                            target.style.outline = '2px solid #000';
+                            target.style.outlineOffset = '2px';
+                            target.style.transform = 'scale(1.1)';
+                        } else {
+                            // Text button selection style
+                            sizeBtns.forEach(b => {
+                                if (!b.hasAttribute('disabled')) {
+                                    b.classList.remove('btn-dark');
+                                    b.classList.add('btn-outline-dark');
+                                }
+                            });
+                            target.classList.remove('btn-outline-dark');
+                            target.classList.add('btn-dark');
+                        }
+                        selectedSize = target.getAttribute('data-size');
                     });
                 });
 
@@ -136,12 +184,15 @@ function loadProductDetail() {
                 const totalStock = product.sizes.reduce((acc, size) => acc + size.stock, 0);
 
                 if (totalStock <= 0) {
+                    // Sembunyikan seluruh area pemilihan ukuran jika stok habis
+                    if (sizeSelectionArea) sizeSelectionArea.style.display = 'none';
+                    if (sizesContainer) sizesContainer.innerHTML = '';
+                    
                     if (addToCartBtn) {
                         addToCartBtn.disabled = true;
                         addToCartBtn.textContent = "Out Of Stock";
                         addToCartBtn.classList.remove('btn-dark');
                         addToCartBtn.classList.add('btn-secondary');
-                        // Menampilkan cursor stop/not-allowed
                         addToCartBtn.style.pointerEvents = 'auto';
                         addToCartBtn.style.cursor = 'not-allowed';
                     }
@@ -188,7 +239,10 @@ function loadProductDetail() {
                 }
 
             } else if (sizesContainer) {
-                sizesContainer.innerHTML = '<p class="text-danger mb-0">Product Out Of Stock</p>';
+                // Sembunyikan seluruh area pemilihan ukuran jika tidak ada data sama sekali
+                if (sizeSelectionArea) sizeSelectionArea.style.display = 'none';
+                sizesContainer.innerHTML = '';
+                
                 const addToCartBtn = document.getElementById('add-to-cart-btn');
                 if (addToCartBtn) {
                     addToCartBtn.disabled = true;

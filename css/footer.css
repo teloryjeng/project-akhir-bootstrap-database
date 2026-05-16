@@ -1,3 +1,14 @@
+/* --- STICKY FOOTER --- */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#footer-placeholder {
+    margin-top: auto;
+}
+
 /* --- FOOTER STYLES --- */
 footer h5 {
     font-family: 'Poppins', sans-serif;

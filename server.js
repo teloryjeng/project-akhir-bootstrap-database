@@ -225,8 +225,8 @@ app.get('/api/cart', (req, res) => {
 
     const sql = `
         SELECT c.id as cart_id, c.user_id, c.product_id, c.size, c.quantity, 
-               p.name, p.price, p.image,
-               (SELECT stock FROM product_sizes WHERE product_id = c.product_id AND size = c.size LIMIT 1) as stock
+               p.name, p.price, p.image, p.category,
+               (SELECT stock FROM product_sizes WHERE product_id = c.product_id AND size_name = c.size LIMIT 1) as stock
         FROM cart c
         LEFT JOIN products p ON c.product_id = p.id
         WHERE c.user_id = ?
@@ -373,11 +373,14 @@ app.post('/api/orders/complete', (req, res) => {
                 if (errorOccurred) return;
 
                 // 2. Kurangi stok di tabel product_sizes
-                const updateStockSql = 'UPDATE product_sizes SET stock = stock - ? WHERE product_id = ? AND size = ?';
+                const updateStockSql = 'UPDATE product_sizes SET stock = stock - ? WHERE product_id = ? AND size_name = ?';
                 db.query(updateStockSql, [item.quantity, item.product_id, item.size], (err, result) => {
                     if (err) {
+                        if (errorOccurred) return;
                         errorOccurred = true;
-                        return db.rollback(() => res.status(500).json({ error: 'Gagal update stok: ' + err.message }));
+                        return db.rollback(() => {
+                            res.status(500).json({ error: 'Gagal update stok: ' + err.message });
+                        });
                     }
 
                     processed++;
