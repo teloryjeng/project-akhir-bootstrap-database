@@ -54,7 +54,7 @@ body {
     object-fit: cover;   /* KUNCI: Gambar akan terpotong secara proporsional tanpa gepeng[cite: 4] */
     object-position: center; /* Fokus pada bagian tengah kemeja[cite: 4] */
     background-color: #ebebeb; /* Warna latar belakang abu-abu seragam */
-    transform: 0.3s ease;
+    transition: transform 0.4s ease;
 }
 
 /* Efek Zoom dan Shadow saat kursor diarahkan ke produk */

@@ -80,13 +80,13 @@
                     const data = await response.json();
 
                     if (response.ok) {
-                        showOverlay("Terima kasih! Pembayaran Anda telah kami terima. Stok produk telah diperbarui dan pesanan Anda sedang diproses.", true, "index.html");
+                        showOverlay("<b>Payment successful!</b><br><br>Thank you for shopping at Haha Hihi Kidswear. Shipping details will be sent via email.", true, "index.html");
                     } else {
-                        showOverlay("Gagal memproses pembayaran: " + (data.error || "Terjadi kesalahan"), false);
+                        showOverlay("Payment failed! " + (data.error || "Something went wrong"), false);
                     }
                 } catch (err) {
                     console.error(err);
-                    showOverlay("Terjadi kesalahan koneksi ke server.", false);
+                    showOverlay("An error occurred connecting to the server.", false);
                 }
             });
         });

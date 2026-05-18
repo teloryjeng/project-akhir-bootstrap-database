@@ -25,6 +25,22 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Membatasi input hanya angka untuk No Telepon dan Kode Pos
+    const phoneInput = document.getElementById('phoneNumber');
+    const postalInput = document.getElementById('postalCode');
+
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    }
+
+    if (postalInput) {
+        postalInput.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    }
 });
 
 function loadCheckoutData(userId) {

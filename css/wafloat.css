@@ -15,7 +15,7 @@
     justify-content: center;
     align-items: center;
     transition: transform 0.3s ease;
-    animation: popIn 0.5s ease-out forwards;
+    animation: popIn 0.5s ease-out;
 }
 
 .wa-float:hover {

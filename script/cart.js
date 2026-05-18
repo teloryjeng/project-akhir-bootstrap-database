@@ -74,7 +74,30 @@ function loadCart(userId) {
                         </div>
                         <div class="col-8 col-md-4">
                             <h6 class="fw-bold mb-1">${item.name}</h6>
-                            <p class="text-muted small mb-0">Size: ${item.size}</p>
+                            ${item.name.toLowerCase().includes('fruit charms') ? 
+                                `<p class="text-muted small mb-0">Amount: ${item.size}</p>` :
+                                (item.category && item.category.toLowerCase() === 'accessories' ? 
+                                    (function() {
+                                        const colorMap = {
+                                            '#000000': 'Black',
+                                            '#FFFFFF': 'White',
+                                            '#B22222': 'Red',
+                                            '#404684': 'Blue',
+                                            '#FFFF00': 'Yellow',
+                                            '#808080': 'Gray',
+                                            '#F4E1EB': 'Pink',
+                                            '#D6D1CB': 'Khaki',
+                                            '#EAEAEA': 'Light Gray'
+
+                                        };
+                                        const colorName = colorMap[item.size.toUpperCase()] || item.size;
+                                        return `
+                                            <p class="text-muted small mb-0 d-flex align-items-center">
+                                                Color: ${colorName} <span class="ms-1" style="display:inline-block; width:12px; height:12px; border-radius:50%; background-color:${item.size}; border:1px solid #ddd;"></span>
+                                            </p>`;
+                                    })() : 
+                                    `<p class="text-muted small mb-0">Size: ${item.size}</p>`)
+                            }
                         </div>
                         <div class="col-6 col-md-3 mt-3 mt-md-0 d-flex align-items-center">
                             <button class="btn btn-outline-dark btn-sm px-2" ${isMinusDisabled} onclick="updateQuantity(${item.cart_id}, ${item.quantity - 1}, ${userId}, ${item.stock})"><i class="bi bi-dash"></i></button>
