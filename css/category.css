@@ -86,27 +86,64 @@ body {
 }
 
 /* Styling Tombol Floating WhatsApp di Pojok Kanan Bawah */
+/* --- PREMIUM ANIMASI PAGINATION --- */
+.pagination {
+    gap: 8px; /* Jarak antar tombol agar tidak dempet */
+}
+
 .pagination .page-link {
-    color: #000; /* Warna teks hitam */
-    border: 1px solid #dee2e6;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
     font-family: 'Poppins', sans-serif;
-    transition: all 0.3s ease;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 0 !important; /* Gaya kotak tajam sesuai branding */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 44px;
 }
 
+/* Efek hover pada link biasa */
 .pagination .page-link:hover {
-    background-color: #f8f9fa;
-    color: #000;
-    border-color: #dee2e6;
+    background-color: #000;
+    color: #fff !important;
+    border-color: #000;
+    transform: translateY(-4px) scale(1.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Halaman yang sedang aktif */
+/* Styling halaman aktif */
 .pagination .page-item.active .page-link {
-    background-color: #000 !important; /* Latar belakang hitam */
+    background-color: #000 !important;
     border-color: #000 !important;
-    color: #fff !important; /* Teks putih */
+    color: #fff !important;
+    font-weight: 700;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Menghilangkan shadow saat tombol diklik */
+/* Hover pada halaman aktif - lift & glow lembut */
+.pagination .page-item.active .page-link:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+}
+
+/* Kondisi tombol disabled */
+.pagination .page-item.disabled .page-link {
+    color: #aaa !important;
+    background-color: #f5f5f5;
+    border-color: #e0e0e0;
+    opacity: 0.6;
+    pointer-events: none;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Menghilangkan default focus shadow */
 .pagination .page-link:focus {
     box-shadow: none;
 }

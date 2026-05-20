@@ -167,3 +167,29 @@ document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
   }
 }, false);
+
+// ==========================================
+// SCROLL REVEAL ANIMASI QUOTE SECTION
+// ==========================================
+function initQuoteReveal() {
+    const quoteSec = document.querySelector('.quote-section');
+    if (quoteSec) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    quoteSec.classList.add('revealed');
+                    observer.unobserve(quoteSec); // Stop observing once revealed
+                }
+            });
+        }, {
+            threshold: 0.15 // Trigger when 15% of the section is visible
+        });
+        observer.observe(quoteSec);
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initQuoteReveal);
+} else {
+    initQuoteReveal();
+}
