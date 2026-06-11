@@ -47,7 +47,7 @@
                     </ul>
                 </div>
 
-                <button class="btn btn-auth w-100 py-3 fw-bold shadow-sm" id="confirmPaymentBtn">I Have Paid</button>
+                <button class="btn btn-secondary w-100 py-3 fw-bold shadow-sm" id="countdownBtn" disabled>Checking Payment... 30s</button>
                 <a href="index.html" class="btn btn-link text-muted mt-3 text-decoration-none small">Pay Later / Back to Home</a>
             </div>
         </div>
@@ -63,7 +63,21 @@
                 document.getElementById('payment-total').textContent = amount;
             }
 
-            document.getElementById('confirmPaymentBtn').addEventListener('click', async () => {
+            const countdownBtn = document.getElementById('countdownBtn');
+            let timeLeft = 30;
+
+            const timer = setInterval(() => {
+                timeLeft--;
+                countdownBtn.textContent = `Checking Payment... ${timeLeft}s`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    countdownBtn.textContent = "Processing Payment...";
+                    processPayment();
+                }
+            }, 1000);
+
+            async function processPayment() {
                 const user = JSON.parse(localStorage.getItem('user'));
                 if (!user) {
                     window.location.href = "signin.html";
@@ -83,12 +97,14 @@
                         showOverlay("<b>Payment successful!</b><br><br>Thank you for shopping at Haha Hihi Kidswear. Shipping details will be sent via email.", true, "index.html");
                     } else {
                         showOverlay("Payment failed! " + (data.error || "Something went wrong"), false);
+                        countdownBtn.textContent = "Payment Failed";
                     }
                 } catch (err) {
                     console.error(err);
                     showOverlay("An error occurred connecting to the server.", false);
+                    countdownBtn.textContent = "Error";
                 }
-            });
+            }
         });
     </script>
 </body>

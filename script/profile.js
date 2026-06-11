@@ -24,13 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const newName = profileNameInput.value.trim();
 
             if (!newName) {
-                alert('Username cannot be empty');
+                showOverlay('Username cannot be empty', false);
                 return;
             }
 
             // Jika nama sama, tidak perlu update
             if (newName === user.name) {
-                alert('There is no change in your username.');
+                showOverlay('There is no change in your username.', false);
                 return;
             }
 
@@ -52,14 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Update data di localStorage agar header ikut berubah
                     user.name = newName;
                     localStorage.setItem('user', JSON.stringify(user));
-                    alert('Username has been successfully updated!');
-                    window.location.reload();
+                    showOverlay('Username has been successfully updated!', true, 'profile.html');
                 } else {
-                    alert('Failed to update username: ' + (data.error || 'An error occurred'));
+                    showOverlay('Failed to update username: ' + (data.error || 'An error occurred'), false);
                 }
             } catch (err) {
                 console.error('Error updating profile:', err);
-                alert('An error occurred while contacting the server.');
+                showOverlay('An error occurred while contacting the server.', false);
             }
         });
     }
@@ -111,29 +110,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Logika Hapus Akun ---
     const deleteBtn = document.getElementById('deleteAccountBtn');
     if (deleteBtn) {
-        deleteBtn.addEventListener('click', async () => {
-            const konfirmasi = confirm('WARNING: Are you sure you want to permanently delete this account? All your data including your cart will be lost.');
-            
-            if (konfirmasi) {
-                try {
-                    const response = await fetch(`http://localhost:3000/api/auth/delete-account/${user.id}`, {
-                        method: 'DELETE'
-                    });
+        deleteBtn.addEventListener('click', () => {
+            showOverlay(
+                'WARNING: Are you sure you want to permanently delete this account? All your data including your cart will be lost.',
+                false,
+                null,
+                true,
+                async () => {
+                    try {
+                        const response = await fetch(`http://localhost:3000/api/auth/delete-account/${user.id}`, {
+                            method: 'DELETE'
+                        });
 
-                    if (response.ok) {
-                        // Hapus data lokal dan pindah ke home
-                        localStorage.removeItem('user');
-                        alert('Your account has been successfully deleted.');
-                        window.location.href = 'index.html';
-                    } else {
-                        const data = await response.json();
-                        alert('Failed to delete account: ' + (data.error || 'An error occurred'));
+                        if (response.ok) {
+                            // Hapus data lokal dan pindah ke home
+                            localStorage.removeItem('user');
+                            showOverlay('Your account has been successfully deleted.', true, 'index.html');
+                        } else {
+                            const data = await response.json();
+                            showOverlay('Failed to delete account: ' + (data.error || 'An error occurred'), false);
+                        }
+                    } catch (err) {
+                        console.error('Error deleting account:', err);
+                        showOverlay('An error occurred while contacting the server.', false);
                     }
-                } catch (err) {
-                    console.error('Error deleting account:', err);
-                    alert('An error occurred while contacting the server.');
                 }
-            }
+            );
         });
     }
 });

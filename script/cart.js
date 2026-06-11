@@ -87,8 +87,9 @@ function loadCart(userId) {
                                             '#808080': 'Gray',
                                             '#F4E1EB': 'Pink',
                                             '#D6D1CB': 'Khaki',
-                                            '#EAEAEA': 'Light Gray'
-
+                                            '#EAEAEA': 'Light Gray',
+                                            '#677BB0': 'Blue',
+                                            '#F9DF92': 'Yellow',
                                         };
                                         const colorName = colorMap[item.size.toUpperCase()] || item.size;
                                         return `
